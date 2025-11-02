@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Pavan",
+    "position": "Software Engineer",
+    "department": "IT",
+    "salary": 15000.0,
+    "email": "Pavan.K@company.com"
+  },
+  {
+    "id": 2,
+    "name": "Pavamana",
+    "position": "Project Manager",
+    "department": "IT",
+    "salary": 25000.0,
+    "email": "Pavamana@company.com"
+  },
+  {
+    "id": 3,
+    "name": "Ram",
+    "position": "HR Specialist",
+    "department": "HR",
+    "salary": 20000.0,
+    "email": "Ram@company.com"
+  },
+  {
+    "id": 4,
+    "name": "Bharath",
+    "position": "Data Analyst",
+    "department": "Analytics",
+    "salary": 30000.0,
+    "email": "Bharath@company.com"
+  }
+]
