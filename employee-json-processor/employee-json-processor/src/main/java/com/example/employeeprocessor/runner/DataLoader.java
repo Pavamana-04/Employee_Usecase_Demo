@@ -20,7 +20,6 @@ public class DataLoader implements CommandLineRunner {
         List<Employee> employees = employeeService.loadEmployeesFromJson();
         System.out.println("Loaded " + employees.size() + " employees into database.");
 
-        // Display loaded employees
         employees.forEach(employee ->
                 System.out.printf("ID: %d, Name: %s, Position: %s%n",
                         employee.getId(), employee.getName(), employee.getPosition()));

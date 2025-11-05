@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.InputStream;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -25,7 +26,6 @@ public class EmployeeService {
 
         List<Employee> employees = objectMapper.readValue(inputStream, new TypeReference<List<Employee>>() {});
 
-
         return employeeRepository.saveAll(employees);
     }
 
@@ -39,5 +39,39 @@ public class EmployeeService {
 
     public void clearAllEmployees() {
         employeeRepository.deleteAll();
+    }
+
+    public Employee saveEmployee(Employee employee) {
+        return employeeRepository.save(employee);
+    }
+
+
+    public Optional<Employee> getEmployeeById(Integer id) {
+        return employeeRepository.findById(id);
+    }
+
+    public Employee updateEmployee(Integer id, Employee employeeDetails) {
+        Employee employee = employeeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Employee not found with id: " + id));
+
+
+        employee.setName(employeeDetails.getName());
+        employee.setPosition(employeeDetails.getPosition());
+        employee.setDepartment(employeeDetails.getDepartment());
+        employee.setSalary(employeeDetails.getSalary());
+        employee.setEmail(employeeDetails.getEmail());
+
+        return employeeRepository.save(employee);
+    }
+
+    public void deleteEmployee(Integer id) {
+        Employee employee = employeeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Employee not found with id: " + id));
+        employeeRepository.delete(employee);
+    }
+
+
+    public boolean employeeExists(Integer id) {
+        return employeeRepository.existsById(id);
     }
 }
